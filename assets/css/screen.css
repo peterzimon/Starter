@@ -13,7 +13,47 @@ production stylesheet in assets/built/screen.css using: gulp dev
 @import "components/global.css";
 
 
+/* Uncomment to test relative font-sizing with various configurations */
+/* ---------------------------------------------------------- */
+
+/* 
+Case #1: Reseting html and body font sizes so `rem` works as `px`'s. 
+This is how most official themes work 
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 2.0rem;
+}
+*/
+
+
+/* 
+Case #2: Using `px` as base font size on body
+
+body {
+    font-size: 20px;
+}
+*/
+
+
+/*
+Case #3: Customising gh-canvas container on top of body to set font-sizes.
+
+body {
+    font-size: 20px;
+}
+
+.gh-canvas {
+    font-size: 18px;
+}
+*/
+
+
 /* Extracted for basic layout */
+/* ---------------------------------------------------------- */
 .gh-canvas {
     display: grid;
     grid-template-columns:
@@ -29,7 +69,6 @@ production stylesheet in assets/built/screen.css using: gulp dev
         minmax(4vw, auto)
         [full-end]
     ;
-    font-size: inherit; /* Override to test various font-sizes */
 }
 
 .gh-canvas > * {
