@@ -11,17 +11,42 @@ production stylesheet in assets/built/screen.css using: gulp dev
 /* Base components */
 @import "vars.css";
 @import "components/global.css";
-@import "components/forms.css";
-@import "components/buttons.css";
 
-/* Ghost components */
-@import "ghost/header.css";
-@import "ghost/content.css";
-@import "ghost/readmore.css";
-@import "ghost/members.css";
-@import "ghost/errors.css";
-@import "ghost/footer.css";
-@import "ghost/badge.css";
+
+/* Extracted for basic layout */
+.gh-canvas {
+    display: grid;
+    grid-template-columns:
+        [full-start]
+        minmax(4vw, auto)
+            [wide-start]
+            minmax(auto, 240px)
+                [main-start]
+                    min(720px, calc(100% - 8vw))
+                [main-end]
+            minmax(auto, 240px)
+            [wide-end]
+        minmax(4vw, auto)
+        [full-end]
+    ;
+    font-size: inherit; /* Override to test various font-sizes */
+}
+
+.gh-canvas > * {
+    grid-column: main-start / main-end;
+}
+
+.kg-width-wide {
+    grid-column: wide-start / wide-end;
+}
+
+.kg-width-full {
+    grid-column: full-start / full-end;
+}
+
+.kg-width-full img {
+    width: 100%;
+}
 
 
 
@@ -94,37 +119,30 @@ html,
 
 .gh-card-image {
     width: 100%;
+    max-width: 720px;
     max-height: 700px;
     object-fit: cover;
-    margin-bottom: 4vmin;
+    margin: 0 auto 4vmin;
 }
 
 .gh-card-meta {
     display: block;
     margin: 0 0 1rem;
-    font-size: 1.4rem;
-    line-height: 1.2em;
     letter-spacing: 0.5px;
+    font-size: 0.75em;
     text-transform: uppercase;
     opacity: 0.8;
 }
 
 .gh-card-content {
+    width: 100%;
     max-width: 720px;
     margin: 0 auto;
-    text-align: center;
-    font-size: 1.6rem;
-}
-
-.gh-card-content p {
-    margin: 1.2rem 0;
-    padding: 0 6vmin;
 }
 
 .gh-card-content > strong {
     display: inline-block;
     padding: 1px 0;
-    font-weight: 500;
     box-shadow: 0 -1px 0 0 inset currentColor;
     opacity: 0.5;
 }
@@ -147,15 +165,7 @@ html,
     max-width: 720px;
     margin: 0.3em auto 0;
     padding: 0 6vmin;
-    font-size: 1.3em;
-    line-height: 1.4em;
     opacity: 0.5;
-}
-
-@media (max-width: 700px) {
-    .gh-page-head > p {
-        font-size: 1.6rem;
-    }
 }
 
 
@@ -170,9 +180,6 @@ html,
 .gh-post-meta {
     display: block;
     margin: 0 0 1rem;
-    font-size: 1.4rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
     opacity: 0.8;
 }
 
@@ -205,7 +212,6 @@ html,
 
 .gh-author-meta {
     margin: 2vmin 0 0 0;
-    font-size: 1.2em;
 }
 
 .gh-author-links {
@@ -227,12 +233,16 @@ html,
     margin: 0 1.25vmin 0 0;
     height: 1em;
     width: 1px;
-    background: rgba(0,0,0,0.3);
     transform: rotate(20deg);
 }
 
-@media (max-width: 700px) {
-    .gh-author-meta {
-        font-size: 1.6rem;
-    }
+/* Misc
+/* ---------------------------------------------------------- */
+
+.homelink {
+    padding: 20px;
+}
+
+.gh-card-link {
+    color: #000;
 }
